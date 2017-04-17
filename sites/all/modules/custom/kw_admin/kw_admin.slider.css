@@ -1,0 +1,74 @@
+
+.slider{  float:left; list-style-type:none; margin:0; width:100%; position:absolute; top:206px;}
+
+#block-kw-admin-kw-medi-slider .block-content {
+    padding: 0;
+    /* background: none; */
+}
+
+.rslides li {
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.rslides li:first-child {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.rslides img {
+    display: block;
+    height: auto;
+    float: left;
+    width: 100%;
+    border: 0;
+}
+
+.rslides_tabs li a {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: url(/health/sites/all/themes/mediregs/images/bullet.png) no-repeat;
+    text-indent: -9999px;
+    border: 0;
+    margin: 0 2px;
+}
+.rslides_tabs {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    text-align: right;
+    top: 10px;
+    right: 20px;
+    z-index: 10;
+    list-style-type: none;
+    display: block;
+    width: 100%;
+}
+.rslides_tabs li{
+    display: inline;
+}
+.rslides_tabs li.rslides_here a {
+    background-position: 0 100%;
+}
+
+.rslides_tabs li a {
+    cursor: pointer;
+    text-align: left;
+    margin-left: 4px !important;
+}
+
+.rslides {
+    text-align: center;
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}

@@ -20,6 +20,10 @@ function kw_admin_block_info() {
     'info' => t('Custom: Image Carousel for the product/mediregs page'),
     'cache' => DRUPAL_CACHE_GLOBAL // Everyone sees the same block!
   );
+  $blocks['kw_medi_slider'] = array( // Homepage Carousel
+    'info' => t('Custom: Medi Slider'),
+    'cache' => DRUPAL_CACHE_GLOBAL // Everyone sees the same block!
+  );
   return $blocks;
 }
 
@@ -174,6 +178,12 @@ function kw_admin_block_view($delta = '') {
       }
       $block['content'] = array(
         '#markup' => check_markup($array['value'], $array['format'])
+      );
+      break;
+    case 'kw_medi_slider':
+      $block['content'] = array(
+        '#theme' => 'kw_admin_slider',
+        '#slides' => array(),
       );
       break;
   }

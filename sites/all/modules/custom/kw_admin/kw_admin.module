@@ -6,6 +6,8 @@
 
 include_once 'kw_admin.blocks.inc';
 include_once 'kw_admin.tokens.inc';
+include_once 'kw_admin.theme.inc';
+
 
 /*
  * Implements hook_menu().
