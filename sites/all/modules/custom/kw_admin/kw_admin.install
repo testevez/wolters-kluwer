@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function kw_admin_install() {
+  kw_admin_update_7000();
+  kw_admin_update_7001();
+  kw_admin_update_7002();
+  kw_admin_update_7003();
+}
+
+/**
+ * Remove a custom block (Accreditation Eloqua Form) the from the second sidebar region
+ */
+function kw_admin_update_7000() {
+  $num_updated = db_update('block') // Table name no longer needs {}
+  ->fields(array(
+    'region' => -1,
+  ))
+    ->condition('delta', 6)
+    ->condition('module', 'block')
+    ->execute();
+
+  drupal_set_message('The Accreditation Eloqua Form has been removed from the 2nd sidebar region (block delta 6). '. $num_updated .' rows in the block table were updated.');
+}
+
+/**
+ * Update content for contact-us page (remove form)
+ */
+function kw_admin_update_7001() {
+  $contact_nid = 641;
+  $node = node_load($contact_nid);
+  $node->body[$node->language][0]['value'] = '<h2>We are committed to ongoing communication with our customers.</h2>
+
+<p>Call us at <strong>(800) 808-6800</strong>.</p>
+
+<p>Wolters Kluwer Law &amp; Business<br />
+21 Highland Circle<br />
+Needham, MA 02494</p>
+  ';
+  node_save($node);
+}
+
+/**
+ * Remove a custom block (Training Eloqua Form) the from the second sidebar region
+ */
+function kw_admin_update_7002() {
+  $num_updated = db_update('block') // Table name no longer needs {}
+  ->fields(array(
+    'region' => -1,
+  ))
+    ->condition('delta', 13)
+    ->condition('module', 'block')
+    ->execute();
+
+  drupal_set_message('The Training Eloqua Form has been removed from the 2nd sidebar region (block delta 13). '. $num_updated .' rows in the block table were updated.');
+}
+
+/**
+ * Remove a custom block (Partners Eloqua Form) the from the second sidebar region
+ */
+function kw_admin_update_7003() {
+  $num_updated = db_update('block') // Table name no longer needs {}
+  ->fields(array(
+    'region' => -1,
+  ))
+    ->condition('delta', 11)
+    ->condition('module', 'block')
+    ->execute();
+
+  drupal_set_message('The Partners Eloqua Form has been removed from the 2nd sidebar region (block delta 11). '. $num_updated .' rows in the block table were updated.');
+}
+

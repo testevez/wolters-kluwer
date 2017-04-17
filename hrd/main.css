@@ -1,0 +1,314 @@
+@charset "UTF-8";
+
+body,td,th,h1,h2,h3 span {
+	font-family: Bliss, Arial;
+    margin: 0px auto;
+    -webkit-text-size-adjust: none;
+}
+.wrapper {
+	margin: 0px auto;
+}
+body{font-size: 14pt}
+
+a {
+    text-decoration:none;
+    color:#0081c6;
+}
+a:hover {
+	color:#ef3e42;
+}
+.clear {
+    content: ".";
+    display: block;
+    height: 0;
+    margin: 0px auto;
+    padding:0;
+    clear: both;
+    visibility: hidden;
+}
+form {
+	    font-size:.7em;
+    text-align:left;
+    line-height:1.3em;
+    font-family:bliss, arial;
+
+    margin: 0px auto;
+    color: black;
+    padding-bottom:25px;
+	padding-top:15px;
+}
+.form-button {
+	text-align: right;
+	padding-right: 5px;
+	padding-top:15px;
+
+}
+li {
+    margin-left:1.1em;
+    text-indent:0em;
+    font-size:.7em;
+    text-align:left;
+    line-height:1.3em;
+    font-family:bliss, arial;
+    list-style: none;
+    padding-bottom:.8em;
+}
+
+li:before {
+
+      /* For a square bullet */
+      content:'\25A0';
+      display: block;
+      position: relative;
+      max-width: 0px;
+      max-height: 0px;
+      left: -13px;
+      top: -2px;
+      color: #0081c6;
+      font-size: .9em;
+    }
+ul {margin: 0; padding: 0;     margin-bottom:10px;}
+
+h1 {
+    font-size:1.4em;
+    text-align:left;
+    font-family:bliss, arial;
+    font-weight:500;
+    margin: 0px auto;
+    padding: 0px;
+    color: white;
+}
+
+h2 {
+    font-size:.8em;
+    text-align:left;
+    line-height:1.5em;
+    font-family:bliss, arial;
+    font-weight:600;
+    margin: 0px auto;
+    color: #0081c6;
+
+    padding-bottom:8px;
+}
+h3 {
+    font-size:.7em;
+    text-align:left;
+    line-height:1.3em;
+    font-family:bliss, arial;
+    font-weight:600;
+    margin: 0px auto;
+    color: black;
+    padding-bottom:14px;
+}
+
+p {
+    font-size:.7em;
+    text-align:left;
+    line-height:1.3em;
+    font-family:bliss, arial;
+
+    margin: 0px auto;
+    color: black;
+    padding-bottom:25px;
+	
+}
+.linkedin {
+    width: 30px; 
+    height: 30px; 
+    background-image:url('img/linkedin-30-h.png'); background-repeat:no-repeat;           
+    display:block;
+}
+.linkedin div {
+    background-image:url('img/linkedin-30.png'); background-repeat:no-repeat;
+    height: 30px;
+    display:block;
+    text-decoration:none;
+}
+.linkedin div:focus, .linkedin div:hover, .linkedin div:active {
+    background:transparent;
+}
+.twitter {
+    width: 30px; 
+    height: 30px; 
+    background-image:url('img/twitter-30-h.png'); background-repeat:no-repeat;           
+    display:block;
+}
+.twitter div {
+    background-image:url('img/twitter-30.png'); background-repeat:no-repeat;
+    height: 30px;
+    display:block;
+    text-decoration:none;
+}
+.twitter div:focus, .twitter div:hover, .twitter div:active {
+    background:transparent;
+}
+.youtube {
+    width: 30px; 
+    height: 30px; 
+    background-image:url('img/youtube-30-h.png'); background-repeat:no-repeat;           
+    display:block;
+}
+.youtube div {
+    background-image:url('img/youtube-30.png'); background-repeat:no-repeat;
+    height: 30px;
+    display:block;
+    text-decoration:none;
+}
+.youtube div:focus, .youtube div:hover, .youtube div:active {
+    background:transparent;
+}
+.demobt {
+    width: 333px; 
+    height: 41px; 
+    margin-top:15px;
+    background-image:url('img/demobt-h.png'); background-repeat:no-repeat;           
+    display:block;
+}
+.demobt div {
+    background-image:url('img/demobt.png'); background-repeat:no-repeat;
+    height: 41px;
+    display:block;
+    text-decoration:none;
+}
+.demobt div:focus, .demobt div:hover, .demobt div:active {
+    background:transparent;
+}
+.brochbt {
+    width: 333px; 
+    height: 41px; 
+    margin-top:0px;
+
+    background-image:url('img/brochbt-h.png'); background-repeat:no-repeat;           
+    display:block;
+}
+.brochbt div {
+    background-image:url('img/brochbt.png'); background-repeat:no-repeat;
+    height: 41px;
+    display:block;
+    text-decoration:none;
+}
+.brochbt div:focus, .brochbt div:hover, .brochbt div:active {
+    background:transparent;
+}
+a.pdflink:hover .pdf div{
+    background:transparent;
+}
+
+          
+.button {
+	width: 127px;
+	height: 24px;
+    border:none;
+    cursor:pointer;
+}
+
+#header {
+    width: 940px; 
+	position:relative;
+	top:-10px;
+    margin: 0px auto;
+}
+
+#footer{
+    background-color:#FFFFFF;
+    font-family:bliss, arial;
+    text-align:center;
+    width:940px;
+    margin:0px auto;
+    padding-top:5px;
+    font-size:8pt;
+    line-height:12pt;
+    color:#555555;
+    font-weight:normal;
+}
+#top-footer {
+    background-color:#FFFFFF;
+    color:#000000;
+    font-family:bliss, arial;
+    text-align:center;
+    width:940px;
+    margin:0px auto;
+    padding-top:15px;
+    font-size:8pt;
+    line-height:12pt;
+    font-weight:normal; 
+}
+#top-footer a{
+    text-decoration:none;
+    color:#000000;
+}
+#footer a{
+    text-decoration:none;
+    color:#555555;
+}
+#footer a:hover{
+	text-decoration:none;
+	color:#000000;
+}
+.label{
+	line-height:28px;
+    font-size:12px;
+}
+h2 span.blacktext {
+	color:black;
+
+}
+.bliss {
+  font-family: Bliss;
+}
+.bClose{
+    cursor:pointer;
+    position:absolute;
+    right:-5px;
+    top:-5px;
+}
+.popup {
+    cursor:pointer;
+font-size: .7em;
+}
+::selection {
+background-color: 
+#7ac143;
+color: #fff;
+text-shadow: none;
+
+}
+
+.popbutton.b-close, .popbutton.bClose {
+border-radius: 7px 7px 7px 7px;
+box-shadow: none;
+font: bold 170% arial;
+padding: 0 6px 2px;
+position: absolute;
+right: -7px;
+top: -7px;
+}
+
+.popbutton {
+background-color: 
+#7ac143;
+border-radius: 10px;
+box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+color: #fff;
+cursor: pointer;
+display: inline-block;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+}
+#element_to_pop_up li:before {
+      content:'\25A0';
+      display: block;
+      position: relative;
+      max-width: 0px;
+      max-height: 0px;
+      left: -13px;
+      top: -2px;
+      color: white;
+      font-size: .9em;
+}
+.popupcolumn {
+	width:230px;
+	float:left;
+	display: block
+}

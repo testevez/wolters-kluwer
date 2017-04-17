@@ -1,0 +1,22 @@
+
+.sf-menu.sf-horizontal.sf-shadow ul,
+.sf-menu.sf-vertical.sf-shadow ul,
+.sf-menu.sf-navbar.sf-shadow ul ul {
+ /* background: url('../images/shadow.png') no-repeat right bottom; */
+  padding: 0 0 0 0 !important;
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.sf-menu.sf-style-light-blue li.sfHover,
+.sf-menu.sf-style-light-blue li.active a,
+.sf-menu.sf-style-light-blue a:focus,
+.sf-menu.sf-style-light-blue a:hover,
+.sf-menu.sf-style-light-blue a:active,
+.sf-menu.sf-style-light-blue.sf-navbar li li {
+  background: green; /*#0081c6*/
+  color: #fff !important;
+}

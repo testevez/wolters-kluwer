@@ -1,0 +1,10 @@
+name = kw_admin
+description = Custom module-level support for the Wolters Kluwer Law & Business { Health } site
+core = 7.x
+package = Wolters Kluwer LB
+version = 7.x-1.0-beta1
+
+configure = admin/wolters-kluwer
+
+
+dependencies[] = token_filter

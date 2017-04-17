@@ -1,0 +1,1403 @@
+<?php
+/**
+ * @file
+ * Code for the hdms_admin feature.
+ */
+
+include_once 'kw_admin.blocks.inc';
+include_once 'kw_admin.tokens.inc';
+
+/*
+ * Implements hook_menu().
+ */
+function kw_admin_menu() {
+  $items['admin/wolters-kluwer'] = array(
+    'title' => 'Wolters Kluwer Administration',
+    'description' => 'Custom configurations for the Wolters Kluwer Drupal site',
+    'access arguments' => array('view the administration theme'),
+    'page callback' => 'system_admin_menu_block_page',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  $items['admin/wolters-kluwer/forms'] = array(
+    'title' => 'Wolters Kluwer Forms Settings',
+    'description' => 'Administer the Custom forms for Wolters Kluwer (Eloqua forms)',
+    'access arguments' => array('administer site configuration'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('kw_admin_forms_settings'),
+    'file' => 'kw_admin.admin.inc',
+    'file path' => drupal_get_path('module', 'kw_admin'),
+  );
+  return $items;
+}
+
+
+/**
+ * Default Comply track form Markup formname: WKmediregs-ct-isam
+ */
+function kw_complytrack_markup_default() {
+  return '
+    <script src="http://img.en25.com/i/livevalidation_standalone.compressed.js"></script>
+ <div class="eloquaFormContainer">
+    <form method="post" name="WKmediregs-ct-isam" action="https://s1654.t.eloqua.com/e/f2" id="form692" target="_blank" onsubmit="setTimeout(\'clear_form()\', 200); return true;" novalidate="novalidate">
+
+        <div class="eloquaFields">
+            <input type="hidden" name="elqFormName" value="WKmediregs-ct-isam">
+           <input type="hidden" name="elqSiteId" value="[site:elqsiteid]">
+            <input type="hidden" name="pageName" value="[site:page_title]">
+            <input type="hidden" name="pageUrl" value="[site:page_url]">
+
+
+<div class="checkoutItem">
+    <label for="C_FirstName">First Name<span class="requiredFieldSign">*</span>    </label>
+    <input type="text" id="field_C_FirstName" name="C_FirstName" class="inputControl">
+</div>
+
+    <script type="text/javascript">
+        var field = new LiveValidation("field_C_FirstName", { validMessage: "", onlyOnBlur: true });
+        field.add(Validate.Presence, { failureMessage: "Please enter your First Name" });
+    </script>
+
+
+<div class="checkoutItem">
+    <label for="C_LastName">Last Name<span class="requiredFieldSign">*</span>    </label>
+    <input type="text" id="field_C_LastName" name="C_LastName" class="inputControl">
+</div>
+
+    <script type="text/javascript">
+        var field = new LiveValidation("field_C_LastName", { validMessage: "", onlyOnBlur: true });
+        field.add(Validate.Presence, { failureMessage: "Please enter your Last Name" });
+    </script>
+
+
+<div class="checkoutItem">
+    <label for="C_EmailAddress">Email Address<span class="requiredFieldSign">*</span>     </label>
+    <input type="text" id="field_C_EmailAddress" name="C_EmailAddress" class="inputControl">
+</div>
+
+    <script type="text/javascript">
+                    var field = new LiveValidation("field_C_EmailAddress", { validMessage: "", onlyOnBlur: true });
+                    field.add(Validate.Presence, { failureMessage: "Please enter your Email Address" });
+                    field.add(Validate.Format, {
+                                pattern: /^[ ]*([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})[ ]*$/i,
+                                failureMessage: "Please type valid Email Address"
+                });
+    </script>
+
+
+<div class="checkoutItem">
+    <label for="C_BusPhone">
+        Phone Number<span class="requiredFieldSign">*</span>    </label>
+    <input type="text" id="field_C_BusPhone" name="C_BusPhone" class="inputControl">
+</div>
+
+<script src="[site:phone_js_path]"></script>
+
+
+    <script type="text/javascript">
+        var PhoneNumberFieldValidation = new LiveValidation("field_C_BusPhone", { validMessage: "", onlyOnBlur: true });
+        PhoneNumberFieldValidation.add(Validate.Presence, { failureMessage: "Please enter your Phone Number" });
+        setPhoneNumberValidation(PhoneNumberFieldValidation, \'Please enter a valid US or Canadian phone number\');
+    </script>
+
+
+<div class="checkoutItem">
+    <label for="title">Title<span class="requiredFieldSign">*</span>    </label>
+    <input type="text" id="field_title" name="title" class="inputControl">
+</div>
+
+    <script type="text/javascript">
+        var field = new LiveValidation("field_title", { validMessage: "", onlyOnBlur: true });
+        field.add(Validate.Presence, { failureMessage: "Please enter your Title" });
+    </script>
+
+
+<div class="checkoutItem">
+    <label for="C_Company">Organization Name<span class="requiredFieldSign">*</span>    </label>
+    <input type="text" id="field_C_Company" name="C_Company" class="inputControl">
+</div>
+
+    <script type="text/javascript">
+        var field = new LiveValidation("field_C_Company", { validMessage: "", onlyOnBlur: true });
+        field.add(Validate.Presence, { failureMessage: "Please enter your Organization" });
+    </script>
+
+<div class="checkoutItem">
+    <label for="mktSegment1">Industry/Market Segment<span class="requiredFieldSign">*</span>    </label>
+
+<select id="field_mktSegment1" name="mktSegment1" tabindex="-1" class="select2-offscreen">
+        <option value="" selected="selected">-- Please Select --</option>
+            <option value="Accounting Firm">Accounting Firm</option>
+            <option value="Banks &amp; Financial">Banks &amp; Financial</option>
+            <option value="Consultants">Consultants</option>
+            <option value="Corporations">Corporations</option>
+            <option value="Federal Government">Federal Government</option>
+            <option value="Financial &amp; Estate">Financial &amp; Estate</option>
+            <option value="Hospitals &amp; Payers">Hospitals &amp; Payers</option>
+            <option value="Insurance Companies">Insurance Companies</option>
+            <option value="Law Schools">Law Schools</option>
+            <option value="Legal Professional">Law Firm</option>
+            <option value="Other">Other</option>
+            <option value="Schools &amp; Libraries">Schools &amp; Libraries</option>
+            <option value="State &amp; Local Government">State &amp; Local Government</option>
+            <option value="Subscription Agents">Subscription Agents</option>
+            <option value="Tax-Exempt &amp; Members">Tax-Exempt &amp; Members</option>
+    </select>
+</div>
+
+<script type="text/javascript">
+        var field = new LiveValidation("field_mktSegment1", { validMessage: "", onlyOnBlur: true });
+        field.add(Validate.Presence, { failureMessage: "Please select your Organization Type" });
+</script>
+
+<div class="checkoutItem">
+    <label for="C_State_Prov">
+        State or Province<span class="requiredFieldSign">*</span>    </label>
+
+<select id="field_C_State_Prov" name="C_State_Prov" tabindex="-1" class="select2-offscreen">
+        <option value="" selected="selected">-- Please Select --</option>
+            <option value="Alabama" country="United States">Alabama</option>
+            <option value="Alaska" country="United States">Alaska</option>
+            <option value="American Samoa" country="United States">American Samoa</option>
+            <option value="Arizona" country="United States">Arizona</option>
+            <option value="Arkansas" country="United States">Arkansas</option>
+            <option value="Armed Forces Americas" country="United States">Armed Forces Americas</option>
+            <option value="Armed Forces Europe" country="United States">Armed Forces Europe</option>
+            <option value="Armed Forces Pacific" country="United States">Armed Forces Pacific</option>
+            <option value="California" country="United States">California</option>
+            <option value="Colorado" country="United States">Colorado</option>
+            <option value="Connecticut" country="United States">Connecticut</option>
+            <option value="Delaware" country="United States">Delaware</option>
+            <option value="District of Columbia" country="United States">District of Columbia</option>
+            <option value="Federated Micronesia" country="United States">Federated Micronesia</option>
+            <option value="Florida" country="United States">Florida</option>
+            <option value="Georgia" country="United States">Georgia</option>
+            <option value="Guam" country="United States">Guam</option>
+            <option value="Hawaii" country="United States">Hawaii</option>
+            <option value="Idaho" country="United States">Idaho</option>
+            <option value="Illinois" country="United States">Illinois</option>
+            <option value="Indiana" country="United States">Indiana</option>
+            <option value="Iowa" country="United States">Iowa</option>
+            <option value="Kansas" country="United States">Kansas</option>
+            <option value="Kentucky" country="United States">Kentucky</option>
+            <option value="Louisiana" country="United States">Louisiana</option>
+            <option value="Maine" country="United States">Maine</option>
+            <option value="Marshall Islands" country="United States">Marshall Islands</option>
+            <option value="Maryland" country="United States">Maryland</option>
+            <option value="Massachusetts" country="United States">Massachusetts</option>
+            <option value="Michigan" country="United States">Michigan</option>
+            <option value="Minnesota" country="United States">Minnesota</option>
+            <option value="Mississippi" country="United States">Mississippi</option>
+            <option value="Missouri" country="United States">Missouri</option>
+            <option value="Montana" country="United States">Montana</option>
+            <option value="Nebraska" country="United States">Nebraska</option>
+            <option value="Nevada" country="United States">Nevada</option>
+            <option value="New Hampshire" country="United States">New Hampshire</option>
+            <option value="New Jersey" country="United States">New Jersey</option>
+            <option value="New Mexico" country="United States">New Mexico</option>
+            <option value="New York" country="United States">New York</option>
+            <option value="North Carolina" country="United States">North Carolina</option>
+            <option value="North Dakota" country="United States">North Dakota</option>
+            <option value="Northern Mariana Islands" country="United States">Northern Mariana Islands</option>
+            <option value="Ohio" country="United States">Ohio</option>
+            <option value="Oklahoma" country="United States">Oklahoma</option>
+            <option value="Oregon" country="United States">Oregon</option>
+            <option value="Palau" country="United States">Palau</option>
+            <option value="Pennsylvania" country="United States">Pennsylvania</option>
+            <option value="Puerto Rico" country="United States">Puerto Rico</option>
+            <option value="Rhode Island" country="United States">Rhode Island</option>
+            <option value="South Carolina" country="United States">South Carolina</option>
+            <option value="South Dakota" country="United States">South Dakota</option>
+            <option value="Tennessee" country="United States">Tennessee</option>
+            <option value="Texas" country="United States">Texas</option>
+            <option value="United States Minor Outlying Islands" country="United States">US Minor Outlying Islands</option>
+            <option value="US Virgin Islands" country="United States">US Virgin Islands</option>
+            <option value="Utah" country="United States">Utah</option>
+            <option value="Vermont" country="United States">Vermont</option>
+            <option value="Virginia" country="United States">Virginia</option>
+            <option value="Washington" country="United States">Washington</option>
+            <option value="West Virginia" country="United States">West Virginia</option>
+            <option value="Wisconsin" country="United States">Wisconsin</option>
+            <option value="Wyoming" country="United States">Wyoming</option>
+            <option value="Alberta" country="Canada">Alberta</option>
+            <option value="British Columbia" country="Canada">British Columbia</option>
+            <option value="Manitoba" country="Canada">Manitoba</option>
+            <option value="New Brunswick" country="Canada">New Brunswick</option>
+            <option value="Newfoundland and Labrador" country="Canada">Newfoundland and Labrador</option>
+            <option value="Northwest Territories" country="Canada">Northwest Territories</option>
+            <option value="Nova Scotia" country="Canada">Nova Scotia</option>
+            <option value="Nunavut" country="Canada">Nunavut</option>
+            <option value="Ontario" country="Canada">Ontario</option>
+            <option value="Prince Edward Island" country="Canada">Prince Edward Island</option>
+            <option value="Quebec" country="Canada">Quebec</option>
+            <option value="Saskatchewan" country="Canada">Saskatchewan</option>
+            <option value="Yukon Territories" country="Canada">Yukon Territories</option>
+    </select>
+</div>
+
+    <script type="text/javascript">
+    var field = new LiveValidation("field_C_State_Prov", { validMessage: "", onlyOnBlur: true });
+    field.add(Validate.Presence, { failureMessage: "Please select your State or Province" });
+    </script>
+
+<div class="checkoutItem">
+    <label for="Product_Interest">Product of Interest<span class="requiredFieldSign">*</span>    </label>
+<select id="field_Product_Interest" name="Product_Interest" tabindex="-1" class="select2-offscreen">
+        <option value="" selected="selected">-- Please Select --</option>
+            <option value="ComplyTrack">ComplyTrack</option>
+            <option value="ISAM">ISAM</option>
+    </select>
+</div>
+
+<script type="text/javascript">
+        var field = new LiveValidation("field_Product_Interest", { validMessage: "", onlyOnBlur: true });
+        field.add(Validate.Presence, { failureMessage: "Please enter your Product of Interest" });
+</script>
+
+
+<input onmouseout="this.src=\'/health/sites/all/themes/mediregs/images/submit.png\'" onmouseover="this.src=\'/health/sites/all/themes/mediregs/images/submit-h.png\'" src="/health/sites/all/themes/mediregs/images/submit.png" style="width: 102px; height: 23px; font-size: 100%;" type="image" value="Submit">
+
+        </div>
+    <input type="hidden" id="leadSourceOriginal" name="leadSourceOriginal" value="Web-Direct"><input type="hidden" id="leadSourceMostRecent" name="leadSourceMostRecent" value="Web-Direct"><input type="hidden" id="elqCampaignId" name="elqCampaignId" value=""><input type="hidden" id="searchEngineOriginal" name="searchEngineOriginal"><input type="hidden" id="searchEngineMostRecent" name="searchEngineMostRecent"><input type="hidden" id="searchQueryOriginal" name="searchQueryOriginal"><input type="hidden" id="searchQueryMostRecent" name="searchQueryMostRecent"><input type="hidden" id="cmMmc" name="cmMmc" value=""></form>
+</div>
+';
+
+}
+
+/**
+ * Default WKMediregsCodeComp form Markup
+ */
+function kw_codecomp_markup_default() {
+  return '
+  <script src="http://img.en25.com/i/livevalidation_standalone.compressed.js"></script>
+<div id="eloquaform">
+  <div class="eloquaFormContainer">
+    <form method="post" name="WKMediregsCodeComp" action="https://s1654.t.eloqua.com/e/f2" id="form692" target="_blank" onsubmit="setTimeout(\'clear_form()\', 200); return true;" novalidate="novalidate">
+        <div class="eloquaFields">
+            <input type="hidden" name="elqFormName" value="WKMediregsCodeComp">
+            <input type="hidden" name="elqSiteId" value="[site:elqsiteid]">
+            <input type="hidden" name="pageName" value="[site:page_title]">
+            <input type="hidden" name="pageUrl" value="[site:page_url]">
+            <div class="checkoutItem">
+                <label for="C_FirstName">First Name<span class="requiredFieldSign">*</span>    </label>
+                <input type="text" id="field_C_FirstName" name="C_FirstName" class="inputControl">
+            </div>
+            <script type="text/javascript">
+                var field = new LiveValidation("field_C_FirstName", { validMessage: "", onlyOnBlur: true });
+                field.add(Validate.Presence, { failureMessage: "Please enter your First Name" });
+            </script>
+            <div class="checkoutItem">
+                <label for="C_LastName">Last Name<span class="requiredFieldSign">*</span>    </label>
+                <input type="text" id="field_C_LastName" name="C_LastName" class="inputControl">
+            </div>
+            <script type="text/javascript">
+                var field = new LiveValidation("field_C_LastName", { validMessage: "", onlyOnBlur: true });
+                field.add(Validate.Presence, { failureMessage: "Please enter your Last Name" });
+            </script>
+            <div class="checkoutItem">
+                <label for="title">Title<span class="requiredFieldSign">*</span>    </label>
+                <input type="text" id="field_title" name="title" class="inputControl">
+            </div>
+            <script type="text/javascript">
+                var field = new LiveValidation("field_title", { validMessage: "", onlyOnBlur: true });
+                field.add(Validate.Presence, { failureMessage: "Please enter your Title" });
+            </script>    
+            <div class="checkoutItem">
+                <label for="C_Company">Organization Name<span class="requiredFieldSign">*</span>    </label>
+                <input type="text" id="field_C_Company" name="C_Company" class="inputControl">
+            </div>
+            <script type="text/javascript">
+                var field = new LiveValidation("field_C_Company", { validMessage: "", onlyOnBlur: true });
+                field.add(Validate.Presence, { failureMessage: "Please enter your Organization" });
+            </script>
+            <div class="checkoutItem">
+                <label for="mktSegment1">Industry/Market Segment<span class="requiredFieldSign">*</span>    </label>
+                
+                <select id="field_mktSegment1" name="mktSegment1" tabindex="-1" class="select2-offscreen">
+                    <option value="" selected="selected">-- Please Select --</option>
+                        <option value="Accounting Firm">Accounting Firm</option>
+                        <option value="Banks &amp; Financial">Banks &amp; Financial</option>
+                        <option value="Consultants">Consultants</option>
+                        <option value="Corporations">Corporations</option>
+                        <option value="Federal Government">Federal Government</option>
+                        <option value="Financial &amp; Estate">Financial &amp; Estate</option>
+                        <option value="Hospitals &amp; Payers">Hospitals &amp; Payers</option>
+                        <option value="Insurance Companies">Insurance Companies</option>
+                        <option value="Law Schools">Law Schools</option>
+                        <option value="Legal Professional">Law Firm</option>
+                        <option value="Other">Other</option>
+                        <option value="Schools &amp; Libraries">Schools &amp; Libraries</option>
+                        <option value="State &amp; Local Government">State &amp; Local Government</option>
+                        <option value="Subscription Agents">Subscription Agents</option>
+                        <option value="Tax-Exempt &amp; Members">Tax-Exempt &amp; Members</option>
+                </select>
+            </div>
+            <script type="text/javascript">
+                var field = new LiveValidation("field_mktSegment1", { validMessage: "", onlyOnBlur: true });
+                field.add(Validate.Presence, { failureMessage: "Please select your Organization Type" });
+            </script>
+            <div class="checkoutItem">
+                <label for="C_EmailAddress">Email Address<span class="requiredFieldSign">*</span>     </label>
+                <input type="text" id="field_C_EmailAddress" name="C_EmailAddress" class="inputControl">
+            </div>
+            <script type="text/javascript">
+              var field = new LiveValidation("field_C_EmailAddress", { validMessage: "", onlyOnBlur: true });
+              field.add(Validate.Presence, { failureMessage: "Please enter your Email Address" });
+              field.add(Validate.Format, {
+                pattern: /^[ ]*([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})[ ]*$/i,
+                failureMessage: "Please type valid Email Address"
+              });
+            </script>
+            <div class="checkoutItem">
+                <label for="C_BusPhone">
+                    Phone Number<span class="requiredFieldSign">*</span>    </label>
+                <input type="text" id="field_C_BusPhone" name="C_BusPhone" class="inputControl">
+            </div>
+            <script src="[site:phone_js_path]"></script>
+            <script type="text/javascript">
+                var PhoneNumberFieldValidation = new LiveValidation("field_C_BusPhone", { validMessage: "", onlyOnBlur: true });
+                PhoneNumberFieldValidation.add(Validate.Presence, { failureMessage: "Please enter your Phone Number" });
+                setPhoneNumberValidation(PhoneNumberFieldValidation, \'Please enter a valid US or Canadian phone number\');
+            </script>
+            <div class="checkoutItem">
+                <label for="C_State_Prov">
+                    State or Province<span class="requiredFieldSign">*</span>    </label>
+                <select id="field_C_State_Prov" name="C_State_Prov" tabindex="-1" class="select2-offscreen">
+                    <option value="" selected="selected">-- Please Select --</option>
+                        <option value="Alabama" country="United States">Alabama</option>
+                        <option value="Alaska" country="United States">Alaska</option>
+                        <option value="American Samoa" country="United States">American Samoa</option>
+                        <option value="Arizona" country="United States">Arizona</option>
+                        <option value="Arkansas" country="United States">Arkansas</option>
+                        <option value="Armed Forces Americas" country="United States">Armed Forces Americas</option>
+                        <option value="Armed Forces Europe" country="United States">Armed Forces Europe</option>
+                        <option value="Armed Forces Pacific" country="United States">Armed Forces Pacific</option>
+                        <option value="California" country="United States">California</option>
+                        <option value="Colorado" country="United States">Colorado</option>
+                        <option value="Connecticut" country="United States">Connecticut</option>
+                        <option value="Delaware" country="United States">Delaware</option>
+                        <option value="District of Columbia" country="United States">District of Columbia</option>
+                        <option value="Federated Micronesia" country="United States">Federated Micronesia</option>
+                        <option value="Florida" country="United States">Florida</option>
+                        <option value="Georgia" country="United States">Georgia</option>
+                        <option value="Guam" country="United States">Guam</option>
+                        <option value="Hawaii" country="United States">Hawaii</option>
+                        <option value="Idaho" country="United States">Idaho</option>
+                        <option value="Illinois" country="United States">Illinois</option>
+                        <option value="Indiana" country="United States">Indiana</option>
+                        <option value="Iowa" country="United States">Iowa</option>
+                        <option value="Kansas" country="United States">Kansas</option>
+                        <option value="Kentucky" country="United States">Kentucky</option>
+                        <option value="Louisiana" country="United States">Louisiana</option>
+                        <option value="Maine" country="United States">Maine</option>
+                        <option value="Marshall Islands" country="United States">Marshall Islands</option>
+                        <option value="Maryland" country="United States">Maryland</option>
+                        <option value="Massachusetts" country="United States">Massachusetts</option>
+                        <option value="Michigan" country="United States">Michigan</option>
+                        <option value="Minnesota" country="United States">Minnesota</option>
+                        <option value="Mississippi" country="United States">Mississippi</option>
+                        <option value="Missouri" country="United States">Missouri</option>
+                        <option value="Montana" country="United States">Montana</option>
+                        <option value="Nebraska" country="United States">Nebraska</option>
+                        <option value="Nevada" country="United States">Nevada</option>
+                        <option value="New Hampshire" country="United States">New Hampshire</option>
+                        <option value="New Jersey" country="United States">New Jersey</option>
+                        <option value="New Mexico" country="United States">New Mexico</option>
+                        <option value="New York" country="United States">New York</option>
+                        <option value="North Carolina" country="United States">North Carolina</option>
+                        <option value="North Dakota" country="United States">North Dakota</option>
+                        <option value="Northern Mariana Islands" country="United States">Northern Mariana Islands</option>
+                        <option value="Ohio" country="United States">Ohio</option>
+                        <option value="Oklahoma" country="United States">Oklahoma</option>
+                        <option value="Oregon" country="United States">Oregon</option>
+                        <option value="Palau" country="United States">Palau</option>
+                        <option value="Pennsylvania" country="United States">Pennsylvania</option>
+                        <option value="Puerto Rico" country="United States">Puerto Rico</option>
+                        <option value="Rhode Island" country="United States">Rhode Island</option>
+                        <option value="South Carolina" country="United States">South Carolina</option>
+                        <option value="South Dakota" country="United States">South Dakota</option>
+                        <option value="Tennessee" country="United States">Tennessee</option>
+                        <option value="Texas" country="United States">Texas</option>
+                        <option value="United States Minor Outlying Islands" country="United States">US Minor Outlying Islands</option>
+                        <option value="US Virgin Islands" country="United States">US Virgin Islands</option>
+                        <option value="Utah" country="United States">Utah</option>
+                        <option value="Vermont" country="United States">Vermont</option>
+                        <option value="Virginia" country="United States">Virginia</option>
+                        <option value="Washington" country="United States">Washington</option>
+                        <option value="West Virginia" country="United States">West Virginia</option>
+                        <option value="Wisconsin" country="United States">Wisconsin</option>
+                        <option value="Wyoming" country="United States">Wyoming</option>
+                        <option value="Alberta" country="Canada">Alberta</option>
+                        <option value="British Columbia" country="Canada">British Columbia</option>
+                        <option value="Manitoba" country="Canada">Manitoba</option>
+                        <option value="New Brunswick" country="Canada">New Brunswick</option>
+                        <option value="Newfoundland and Labrador" country="Canada">Newfoundland and Labrador</option>
+                        <option value="Northwest Territories" country="Canada">Northwest Territories</option>
+                        <option value="Nova Scotia" country="Canada">Nova Scotia</option>
+                        <option value="Nunavut" country="Canada">Nunavut</option>
+                        <option value="Ontario" country="Canada">Ontario</option>
+                        <option value="Prince Edward Island" country="Canada">Prince Edward Island</option>
+                        <option value="Quebec" country="Canada">Quebec</option>
+                        <option value="Saskatchewan" country="Canada">Saskatchewan</option>
+                        <option value="Yukon Territories" country="Canada">Yukon Territories</option>
+                </select>
+            </div>
+            <script type="text/javascript">
+            var field = new LiveValidation("field_C_State_Prov", { validMessage: "", onlyOnBlur: true });
+            field.add(Validate.Presence, { failureMessage: "Please select your State or Province" });
+            </script>
+            <div class="checkoutItem">
+                <label for="Product_Interest">Product of Interest<span class="requiredFieldSign">*</span>    </label>
+            <select id="field8" name="Product_Interest" class="field-size-top-large" >
+              <option value="---Please Select---" >
+                ---Please Select---
+              </option>
+              <option value="Coding Suite" >
+                Coding Suite
+              </option>
+              <option value="Compliance Suite" >
+                Compliance Suite
+              </option>
+              <option value="Device Regulation" >
+                Device Regulation
+              </option>
+              <option value="Food Regulation" >
+                Food Regulation
+              </option>
+              <option value="ICD-10 Impact Analysis" >
+                ICD-10 Impact Analysis
+              </option>
+              <option value="Pharmaceutical Regulation" >
+                Pharmaceutical Regulation
+              </option>
+            </select>
+            </div>
+            <input id="field10" onmouseout="this.src=\'/health/sites/all/themes/mediregs/images/submit.png\'" onmouseover="this.src=\'/health/sites/all/themes/mediregs/images/submit-h.png\'" src="/health/sites/all/themes/mediregs/images/submit.png" style="width: 102px; height: 23px; font-size: 100%;" type="image" value="Submit">
+        </div>
+      <input type="hidden" id="leadSourceOriginal" name="leadSourceOriginal" value="Web-Affiliate">
+      <input type="hidden" id="leadSourceMostRecent" name="leadSourceMostRecent" value="Web-Organic Search">
+      <input type="hidden" id="elqCampaignId" name="elqCampaignId" value="">
+      <input type="hidden" id="searchEngineOriginal" name="searchEngineOriginal" value="CJ">
+      <input type="hidden" id="searchEngineMostRecent" name="searchEngineMostRecent" value="Google">
+      <input type="hidden" id="searchQueryOriginal" name="searchQueryOriginal">
+      <input type="hidden" id="searchQueryMostRecent" name="searchQueryMostRecent">
+      <input type="hidden" id="cmMmc" name="cmMmc" value="">
+    </form>
+</div>
+  </div>
+  ';
+}
+
+/**
+ * Default wkic (Intelliconnect) form Markup
+ */
+function kw_wkic_markup_default() {
+  return '
+<h1>New form</h1>
+  <div>
+  <form method="post" name="wkic" action="https://s1654.t.eloqua.com/e/f2" target="_blank"  onsubmit="setTimeout(function(){if(document.querySelector){var s=document.querySelector(\'form#form694 input[type=submit]\');if(s){s.disabled=true;}}},100);return true;" id="form694" class="elq-form" >
+    <input value="wkic" type="hidden" name="elqFormName"  />
+    <input value="1654" type="hidden" name="elqSiteId"  />
+    <div id="formElement0" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <label for="field0" >
+              Email Address
+              <span style="color: red !important; display: inline; float: none; font-weight: bold; margin: 0pt 0pt 0pt; padding: 0pt 0pt 0pt" >
+                *
+              </span>
+            </label>
+            <input id="field0" name="C_EmailAddress" type="text" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement1" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <label for="field1" style="display: block; line-height: 150%; padding: 1px 0pt 3px; margin: 0pt 15px 0pt 0pt; word-wrap: break-word" >
+              First Name
+              <span style="color: red !important; display: inline; float: none; font-weight: bold; margin: 0pt 0pt 0pt; padding: 0pt 0pt 0pt" >
+                *
+              </span>
+            </label>
+            <input id="field1" name="C_FirstName" type="text" value=""   />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement2" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100"  >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <label for="field2" style="display: block; line-height: 150%; padding: 1px 0pt 3px; margin: 0pt 15px 0pt 0pt; word-wrap: break-word" >
+              Last Name
+              <span style="color: red !important; display: inline; float: none; font-weight: bold; margin: 0pt 0pt 0pt; padding: 0pt 0pt 0pt" >
+                *
+              </span>
+            </label>
+            <input id="field2" name="C_LastName" type="text" value=""   />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement3" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <label for="field3" style="display: block; line-height: 150%; padding: 1px 0pt 3px;  margin: 0pt 15px 0pt 0pt; word-wrap: break-word" >
+              Business Phone
+              <span style="color: red !important; display: inline; float: none; font-weight: bold; margin: 0pt 0pt 0pt; padding: 0pt 0pt 0pt" >
+                *
+              </span>
+            </label>
+            <input id="field3" name="C_BusPhone" type="text" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement4" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <label for="field4" style="display: block; line-height: 150%; padding: 1px 0pt 3px; margin: 0pt 15px 0pt 0pt; word-wrap: break-word" >
+              Title
+              <span style="color: red !important; display: inline; float: none; font-weight: bold; margin: 0pt 0pt 0pt; padding: 0pt 0pt 0pt" >
+                *
+              </span>
+            </label>
+            <input id="field4" name="title" type="text" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement5" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <label for="field5" style="display: block; line-height: 150%; padding: 1px 0pt 3px; margin: 0pt 15px 0pt 0pt; word-wrap: break-word" >
+              Organization Type
+              <span style="color: red !important; display: inline; float: none; font-weight: bold; margin: 0pt 0pt 0pt; padding: 0pt 0pt 0pt" >
+                *
+              </span>
+            </label>
+            <select id="field5" name="C_OrganizationType" >
+              <option value="" selected="selected" >
+                -- Please Select --
+              </option>
+              <option value="Accounting Firm" >
+                Accounting Firm
+              </option>
+              <option value="Banks & Financial" >
+                Banks &amp; Financial
+              </option>
+              <option value="Consultants" >
+                Consultants
+              </option>
+              <option value="Corporations" >
+                Corporations
+              </option>
+              <option value="Federal Government" >
+                Federal Government
+              </option>
+              <option value="Financial & Estate" >
+                Financial &amp; Estate
+              </option>
+              <option value="Hospitals & Payers" >
+                Hospitals &amp; Payers
+              </option>
+              <option value="Insurance Companies" >
+                Insurance Companies
+              </option>
+              <option value="Law Schools" >
+                Law Schools
+              </option>
+              <option value="Legal Professional" >
+                Legal Professional
+              </option>
+              <option value="Other" >
+                Other
+              </option>
+              <option value="Schools & Libraries" >
+                Schools &amp; Libraries
+              </option>
+              <option value="State & Local Government" >
+                State &amp; Local Government
+              </option>
+              <option value="Subscription Agents" >
+                Subscription Agents
+              </option>
+              <option value="Tax-Exempt & Members" >
+                Tax-Exempt &amp; Members
+              </option>
+            </select>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement6" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <label for="field6" style="display: block; line-height: 150%; padding: 1px 0pt 3px; float: left; width: 31%; margin: 0pt 15px 0pt 0pt; word-wrap: break-word" >
+              Firm Size
+            </label>
+            <select id="field6" name="SubMarketSegment" >
+              <option value="---please select---" >
+                ---please select---
+              </option>
+              <option value="2 - 4 Total Employees" >
+                2 - 4 Total Employees
+              </option>
+              <option value="5 - 9 Total Employees" >
+                5 - 9 Total Employees
+              </option>
+              <option value="10 - 19 Total Employees" >
+                10 - 19 Total Employees
+              </option>
+              <option value="20 - 49 Total Employees" >
+                20 - 49 Total Employees
+              </option>
+              <option value="50 - 99 Total Employees" >
+                50 - 99 Total Employees
+              </option>
+              <option value="100+ Total Employees" >
+                100+ Total Employees
+              </option>
+              <option value="Law Firms - 1-3 Attorneys" >
+                Law Firms - 1-3 Attorneys
+              </option>
+              <option value="Law Firms - 4-5 Attorneys" >
+                Law Firms - 4-5 Attorneys
+              </option>
+              <option value="Law Firms - 6-10 Attorneys" >
+                Law Firms - 6-10 Attorneys
+              </option>
+              <option value="Law Firms - 11-20 Attorneys" >
+                Law Firms - 11-20 Attorneys
+              </option>
+              <option value="Law Firms - 21-50 Attorneys" >
+                Law Firms - 21-50 Attorneys
+              </option>
+              <option value="Law Firms - 51-100 Attorneys" >
+                Law Firms - 51-100 Attorneys
+              </option>
+              <option value="Law Firms - 101-250 Attorneys" >
+                Law Firms - 101-250 Attorneys
+              </option>
+              <option value="Law Firms - 251-600 Attorneys" >
+                Law Firms - 251-600 Attorneys
+              </option>
+              <option value="Law Firms - 601-999 Attorneys" >
+                Law Firms - 601-999 Attorneys
+              </option>
+              <option value="Law Firms - 1000+ Attorneys" >
+                Law Firms - 1000+ Attorneys
+              </option>
+              <option value="Law Firms - Puerto Rico and Virgin Islands" >
+                LFs - Puerto Rico & V. Islands
+              </option>
+              <option value="Sole Proprietor" >
+                Sole Proprietor
+              </option>
+            </select>
+            <label class="instructions" style="color: #444444; display: block; font-size: 10px; padding: 6px 0pt 3px;  >
+              If law firm, please specify firm size:
+            </label>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement7" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <label for="field7" style="display: block; line-height: 150%; padding: 1px 0pt 3px; margin: 0pt 15px 0pt 0pt; word-wrap: break-word" >
+              Company
+              <span style="color: red !important; display: inline; float: none; font-weight: bold; margin: 0pt 0pt 0pt; padding: 0pt 0pt 0pt" >
+                *
+              </span>
+            </label>
+            <input id="field7" name="C_Company" type="text" value=""/>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement8" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <label for="field8" style="display: block; line-height: 150%; padding: 1px 0pt 3px; margin: 0pt 15px 0pt 0pt; word-wrap: break-word" >
+              State or Province
+              <span style="color: red !important; display: inline; float: none; font-weight: bold; margin: 0pt 0pt 0pt; padding: 0pt 0pt 0pt" >
+                *
+              </span>
+            </label>
+            <select id="field8" name="C_State_Prov"  >
+              <option value="" selected="selected" >
+                -- Please Select --
+              </option>
+              <option value="Alabama" >
+                Alabama
+              </option>
+              <option value="Alaska" >
+                Alaska
+              </option>
+              <option value="American Samoa" >
+                American Samoa
+              </option>
+              <option value="Arizona" >
+                Arizona
+              </option>
+              <option value="Arkansas" >
+                Arkansas
+              </option>
+              <option value="Armed Forces Americas" >
+                Armed Forces Americas
+              </option>
+              <option value="Armed Forces Europe" >
+                Armed Forces Europe
+              </option>
+              <option value="Armed Forces Pacific" >
+                Armed Forces Pacific
+              </option>
+              <option value="California" >
+                California
+              </option>
+              <option value="Colorado" >
+                Colorado
+              </option>
+              <option value="Connecticut" >
+                Connecticut
+              </option>
+              <option value="Delaware" >
+                Delaware
+              </option>
+              <option value="District of Columbia" >
+                District of Columbia
+              </option>
+              <option value="Federated Micronesia" >
+                Federated Micronesia
+              </option>
+              <option value="Florida" >
+                Florida
+              </option>
+              <option value="Georgia" >
+                Georgia
+              </option>
+              <option value="Guam" >
+                Guam
+              </option>
+              <option value="Hawaii" >
+                Hawaii
+              </option>
+              <option value="Idaho" >
+                Idaho
+              </option>
+              <option value="Illinois" >
+                Illinois
+              </option>
+              <option value="Indiana" >
+                Indiana
+              </option>
+              <option value="Iowa" >
+                Iowa
+              </option>
+              <option value="Kansas" >
+                Kansas
+              </option>
+              <option value="Kentucky" >
+                Kentucky
+              </option>
+              <option value="Louisiana" >
+                Louisiana
+              </option>
+              <option value="Maine" >
+                Maine
+              </option>
+              <option value="Marshall Islands" >
+                Marshall Islands
+              </option>
+              <option value="Maryland" >
+                Maryland
+              </option>
+              <option value="Massachusetts" >
+                Massachusetts
+              </option>
+              <option value="Michigan" >
+                Michigan
+              </option>
+              <option value="Minnesota" >
+                Minnesota
+              </option>
+              <option value="Mississippi" >
+                Mississippi
+              </option>
+              <option value="Missouri" >
+                Missouri
+              </option>
+              <option value="Montana" >
+                Montana
+              </option>
+              <option value="Nebraska" >
+                Nebraska
+              </option>
+              <option value="Nevada" >
+                Nevada
+              </option>
+              <option value="New Hampshire" >
+                New Hampshire
+              </option>
+              <option value="New Jersey" >
+                New Jersey
+              </option>
+              <option value="New Mexico" >
+                New Mexico
+              </option>
+              <option value="New York" >
+                New York
+              </option>
+              <option value="North Carolina" >
+                North Carolina
+              </option>
+              <option value="North Dakota" >
+                North Dakota
+              </option>
+              <option value="Northern Mariana Islands" >
+                Northern Mariana Islands
+              </option>
+              <option value="Ohio" >
+                Ohio
+              </option>
+              <option value="Oklahoma" >
+                Oklahoma
+              </option>
+              <option value="Oregon" >
+                Oregon
+              </option>
+              <option value="Palau" >
+                Palau
+              </option>
+              <option value="Pennsylvania" >
+                Pennsylvania
+              </option>
+              <option value="Puerto Rico" >
+                Puerto Rico
+              </option>
+              <option value="Rhode Island" >
+                Rhode Island
+              </option>
+              <option value="South Carolina" >
+                South Carolina
+              </option>
+              <option value="South Dakota" >
+                South Dakota
+              </option>
+              <option value="Tennessee" >
+                Tennessee
+              </option>
+              <option value="Texas" >
+                Texas
+              <option value="US Minor Outlying Islands" >
+                US Minor Outlying Islands
+              </option>
+              <option value="US Virgin Islands" >
+                US Virgin Islands
+              </option>
+              <option value="Utah" >
+                Utah
+              </option>
+              <option value="Vermont" >
+                Vermont
+              </option>
+              <option value="Virginia" >
+                Virginia
+              </option>
+              <option value="Washington" >
+                Washington
+              </option>
+              <option value="West Virginia" >
+                West Virginia
+              </option>
+              <option value="Wisconsin" >
+                Wisconsin
+              </option>
+              <option value="Wyoming" >
+                Wyoming
+              </option>
+              <option value="Alberta" >
+                Alberta
+              </option>
+              <option value="British Columbia" >
+                British Columbia
+              </option>
+              <option value="Manitoba" >
+                Manitoba
+              </option>
+              <option value="New Brunswick" >
+                New Brunswick
+              </option>
+              <option value="Newfoundland and Labrador" >
+                Newfoundland and Labrador
+              </option>
+              <option value="Northwest Territories" >
+                Northwest Territories
+              </option>
+              <option value="Nova Scotia" >
+                Nova Scotia
+              </option>
+              <option value="Nunavut" >
+                Nunavut
+              </option>
+              <option value="Ontario" >
+                Ontario
+              </option>
+              <option value="Prince Edward Island" >
+                Prince Edward Island
+              </option>
+              <option value="Quebec" >
+                Quebec
+              </option>
+              <option value="Saskatchewan" >
+                Saskatchewan
+              </option>
+              <option value="Yukon Territories" >
+                Yukon Territories
+              </option>
+            </select>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement9" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <label for="field9" style="display: block; line-height: 150%; padding: 1px 0pt 3px;margin: 0pt 15px 0pt 0pt; word-wrap: break-word" >
+              Zip or Postal Code
+              <span style="color: red !important; display: inline; float: none; font-weight: bold; margin: 0pt 0pt 0pt; padding: 0pt 0pt 0pt" >
+                *
+              </span>
+            </label>
+            <input id="field9" name="C_ZipPostal" type="text" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement10" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field10" type="hidden" name="elqCampaignId" value="5736"  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement11" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field11" type="hidden" name="searchEngineMostRecent" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement12" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field12" type="hidden" name="searchEngineOriginal" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement13" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field13" type="hidden" name="searchQueryMostRecent" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement14" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field14" type="hidden" name="searchQueryOriginal" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement15" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field15" type="hidden" name="leadSourceMostRecent" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement16" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field16" type="hidden" name="leadSourceOriginal" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement17" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field17" type="hidden" name="pageName" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement18" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field18" type="hidden" name="pageUrl" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement19" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field19" type="hidden" name="sku" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement20" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field20" type="hidden" name="productName" value="IntelliConnect"  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement21" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input id="field21" type="hidden" name="cm_mmc" value=""  />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formElement22" class="sc-view form-design-field sc-static-layout sc-regular-size" style="left: 0px; right: 0px; top: 0px; bottom: 0px; padding: 6px 5px 9px 9px" >
+      <div class="field-wrapper" >
+      </div>
+      <div class="field-wrapper" style="float: left; width: 100%; clear: both" >
+        <div class="_100" style="float: left; width: 96%; margin-right: 2%; margin-left: 2%" >
+          <p style="position: relative; margin: 0px; padding: 0px" >
+            <input onmouseout="this.src=\'/health/sites/all/themes/mediregs/images/submit.png\'" onmouseover="this.src=\'/health/sites/all/themes/mediregs/images/submit-h.png\'" src="/health/sites/all/themes/mediregs/images/submit.png" style="width: 102px; height: 23px; font-size: 100%;" type="image" value="Submit">
+          </p>
+        </div>
+      </div>
+    </div>
+  </form>
+  <script src="https://img.en25.com/i/livevalidation_standalone.compressed.js" type="text/javascript" >
+  </script>
+  <style type="text/css" media="screen" >
+    .LV_validation_message{
+      font-weight:bold;
+      margin: 0 0 0 5px;
+    }
+    .LV_valid{
+      color:#00CC00;
+      display:none;
+    }
+    .LV_invalid{
+      color:#CC0000;
+      font-size:10px;
+    }
+    .LV_valid_field, input.LV_valid_field:hover, input.LV_valid_field:active, textarea.LV_valid_field:hover, textarea.LV_valid_field:active {
+      outline: 1px solid #00CC00;
+    }
+    .LV_invalid_field, input.LV_invalid_field:hover, input.LV_invalid_field:active, textarea.LV_invalid_field:hover, textarea.LV_invalid_field:active {
+      outline: 1px solid #CC0000;
+    }
+  </style>
+  <script type="text/javascript" >
+    var dom0 = document.querySelector(\'#form694 #field0\');
+    var field0 = new LiveValidation(dom0, {
+      validMessage: "", onlyOnBlur: false, wait: 300}
+                                   );
+    field0.add(Validate.Presence, {
+      failureMessage:"This field is required"}
+              );
+    var dom1 = document.querySelector(\'#form694 #field1\');
+    var field1 = new LiveValidation(dom1, {
+      validMessage: "", onlyOnBlur: false, wait: 300}
+                                   );
+    field1.add(Validate.Presence, {
+      failureMessage:"This field is required"}
+              );
+    var dom2 = document.querySelector(\'#form694 #field2\');
+    var field2 = new LiveValidation(dom2, {
+      validMessage: "", onlyOnBlur: false, wait: 300}
+                                   );
+    field2.add(Validate.Presence, {
+      failureMessage:"This field is required"}
+              );
+    var dom3 = document.querySelector(\'#form694 #field3\');
+    var field3 = new LiveValidation(dom3, {
+      validMessage: "", onlyOnBlur: false, wait: 300}
+                                   );
+    field3.add(Validate.Presence, {
+      failureMessage:"This field is required"}
+              );
+    var dom4 = document.querySelector(\'#form694 #field4\');
+    var field4 = new LiveValidation(dom4, {
+      validMessage: "", onlyOnBlur: false, wait: 300}
+                                   );
+    field4.add(Validate.Presence, {
+      failureMessage:"This field is required"}
+              );
+    var dom5 = document.querySelector(\'#form694 #field5\');
+    var field5 = new LiveValidation(dom5, {
+      validMessage: "", onlyOnBlur: false, wait: 300}
+                                   );
+    field5.add(Validate.Presence, {
+      failureMessage:"This field is required"}
+              );
+    var dom6 = document.querySelector(\'#form694 #field6\');
+    var field6 = new LiveValidation(dom6, {
+      validMessage: "", onlyOnBlur: false, wait: 300}
+                                   );
+    var dom7 = document.querySelector(\'#form694 #field7\');
+    var field7 = new LiveValidation(dom7, {
+      validMessage: "", onlyOnBlur: false, wait: 300}
+                                   );
+    field7.add(Validate.Presence, {
+      failureMessage:"This field is required"}
+              );
+    var dom8 = document.querySelector(\'#form694 #field8\');
+    var field8 = new LiveValidation(dom8, {
+      validMessage: "", onlyOnBlur: false, wait: 300}
+                                   );
+    field8.add(Validate.Presence, {
+      failureMessage:"This field is required"}
+              );
+    var dom9 = document.querySelector(\'#form694 #field9\');
+    var field9 = new LiveValidation(dom9, {
+      validMessage: "", onlyOnBlur: false, wait: 300}
+                                   );
+    field9.add(Validate.Presence, {
+      failureMessage:"This field is required"}
+              );
+    function resetSubmitButton(e){
+      var submitButtons = e.target.form.getElementsByClassName(\'submit-button\');
+      for(var i=0;i<submitButtons.length;i++){
+        submitButtons[i].disabled = false;
+      }
+    }
+    function addChangeHandler(elements){
+      for(var i=0; i<elements.length; i++){
+        elements[i].addEventListener(\'change\', resetSubmitButton);
+      }
+    }
+    var form = document.getElementById(\'form694\');
+    addChangeHandler(form.getElementsByTagName(\'input\'));
+    addChangeHandler(form.getElementsByTagName(\'select\'));
+    addChangeHandler(form.getElementsByTagName(\'textarea\'));
+  </script>
+</div>';
+}
+
+/**
+ * Default Image Carousel for the product/mediregs page Markup
+ */
+function kw_mediregs_carousel_markup_default() {
+  return '
+  
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <style>
+
+  .slider{  float:left; list-style-type:none; margin:0; width:100%; position:absolute; top:206px;}
+   
+  
+  
+  .rslides li {
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+    }
+  
+  .rslides li:first-child {
+    position: relative;
+    display: block;
+    float: left;
+    }
+  
+  .rslides img {
+    display: block;
+    height: auto;
+    float: left;
+    width: 100%;
+    border: 0;
+    }
+  
+  .rslides_tabs li a {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: url(/health/sites/all/themes/mediregs/images/bullet.png) no-repeat;
+    text-indent: -9999px;
+    border: 0;
+    margin: 0 2px;
+  }
+  .rslides_tabs {
+    margin: 0;
+
+    padding: 0;
+    position: relative;
+   text-align:right;
+    top:-406px;
+right:10px;
+    z-index: 10;
+    list-style-type:none;  
+  }
+  .rslides_tabs li{
+    display: inline;
+  }
+  .rslides_tabs li.rslides_here a {
+    background-position: 0 100%;
+  }
+  
+  .rslides_tabs li a {
+    cursor: pointer;
+    text-align: left;
+    margin-left: 4px !important;
+  }
+  
+  .rslides {
+    text-align: center;
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  </style>
+  
+  <script>
+(function(c,I,B){c.fn.responsiveSlides=function(l){var a=c.extend({auto:!0,speed:500,timeout:4E3,pager:!1,nav:!1,random:!1,pause:!1,pauseControls:!0,prevText:"Previous",nextText:"Next",maxwidth:"",navContainer:"",manualControls:"",namespace:"rslides",before:c.noop,after:c.noop},l);return this.each(function(){B++;var f=c(this),s,r,t,m,p,q,n=0,e=f.children(),C=e.size(),h=parseFloat(a.speed),D=parseFloat(a.timeout),u=parseFloat(a.maxwidth),g=a.namespace,d=g+B,E=g+"_nav "+d+"_nav",v=g+"_here",j=d+"_on",
+w=d+"_s",k=c("<ul class=\'"+g+"_tabs "+d+"_tabs\' />"),x={"float":"left",position:"relative",opacity:1,zIndex:2},y={"float":"none",position:"absolute",opacity:0,zIndex:1},F=function(){var b=(document.body||document.documentElement).style,a="transition";if("string"===typeof b[a])return!0;s=["Moz","Webkit","Khtml","O","ms"];var a=a.charAt(0).toUpperCase()+a.substr(1),c;for(c=0;c<s.length;c++)if("string"===typeof b[s[c]+a])return!0;return!1}(),z=function(b){a.before(b);F?(e.removeClass(j).css(y).eq(b).addClass(j).css(x),
+n=b,setTimeout(function(){a.after(b)},h)):e.stop().fadeOut(h,function(){c(this).removeClass(j).css(y).css("opacity",1)}).eq(b).fadeIn(h,function(){c(this).addClass(j).css(x);a.after(b);n=b})};a.random&&(e.sort(function(){return Math.round(Math.random())-0.5}),f.empty().append(e));e.each(function(a){this.id=w+a});f.addClass(g+" "+d);l&&l.maxwidth&&f.css("max-width",u);e.hide().css(y).eq(0).addClass(j).css(x).show();F&&e.show().css({"-webkit-transition":"opacity "+h+"ms ease-in-out","-moz-transition":"opacity "+
+h+"ms ease-in-out","-o-transition":"opacity "+h+"ms ease-in-out",transition:"opacity "+h+"ms ease-in-out"});if(1<e.size()){if(D<h+100)return;if(a.pager&&!a.manualControls){var A=[];e.each(function(a){a+=1;A+="<li><a href=\'#\' class=\'"+w+a+"\'>"+a+"</a></li>"});k.append(A);l.navContainer?c(a.navContainer).append(k):f.after(k)}a.manualControls&&(k=c(a.manualControls),k.addClass(g+"_tabs "+d+"_tabs"));(a.pager||a.manualControls)&&k.find("li").each(function(a){c(this).addClass(w+(a+1))});if(a.pager||a.manualControls)q=
+k.find("a"),r=function(a){q.closest("li").removeClass(v).eq(a).addClass(v)};a.auto&&(t=function(){p=setInterval(function(){e.stop(!0,!0);var b=n+1<C?n+1:0;(a.pager||a.manualControls)&&r(b);z(b)},D)},t());m=function(){a.auto&&(clearInterval(p),t())};a.pause&&f.hover(function(){clearInterval(p)},function(){m()});if(a.pager||a.manualControls)q.bind("click",function(b){b.preventDefault();a.pauseControls||m();b=q.index(this);n===b||c("."+j).queue("fx").length||(r(b),z(b))}).eq(0).closest("li").addClass(v),
+a.pauseControls&&q.hover(function(){clearInterval(p)},function(){m()});if(a.nav){g="<a href=\'#\' class=\'"+E+" prev\'>"+a.prevText+"</a><a href=\'#\' class=\'"+E+" next\'>"+a.nextText+"</a>";l.navContainer?c(a.navContainer).append(g):f.after(g);var d=c("."+d+"_nav"),G=d.filter(".prev");d.bind("click",function(b){b.preventDefault();b=c("."+j);if(!b.queue("fx").length){var d=e.index(b);b=d-1;d=d+1<C?n+1:0;z(c(this)[0]===G[0]?b:d);if(a.pager||a.manualControls)r(c(this)[0]===G[0]?b:d);a.pauseControls||m()}});
+a.pauseControls&&d.hover(function(){clearInterval(p)},function(){m()})}}if("undefined"===typeof document.body.style.maxWidth&&l.maxwidth){var H=function(){f.css("width","100%");f.width()>u&&f.css("width",u)};H();c(I).bind("resize",function(){H()})}})}})(jQuery,this,0);
+    
+    $(function () {
+
+      $("#slider").responsiveSlides({
+        auto: true,
+        pager: true,
+        timeout: 8000,
+        speed: 1000,
+        namespace: "rslides",
+        maxwidth: 940
+      });
+
+
+    });
+    
+$(document).ready(function(){
+    var isopen = false;
+    if (navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)) {
+        $(".cover").click(function(){
+            if (isopen) {
+                $(this).stop().animate({top:\'206px\'},{queue:false,duration:1160});
+                isopen = false;
+            }
+            else {
+            $(this).stop().animate({top:\'100px\'},{queue:false,duration:500}); 
+                isopen = true;
+            }
+        });
+    }
+    else {
+        //Full Box Sliding (Hidden to Visible)
+        $(".cover").hover(function(){
+            $(this).stop().animate({top:\'100px\'},{queue:false,duration:500}); }, function() {
+                $(this).stop().animate({top:\'206px\'},{queue:false,duration:1160}); });
+    }
+});
+  </script>
+
+
+<ul class="rslides" id="slider">
+  <li>
+      <a href="/health/product/coding-suite"><img src="/health/sites/all/themes/mediregs/images/1_WKWebBanner_Coding_02.jpg" alt=""></a>
+  </li>
+  <li>
+      <a href="/health/product/compliance-suite"><img src="/health/sites/all/themes/mediregs/images/2_WKWebBanner_Compliance_02.jpg" alt=""></a>
+  </li>
+  <li>
+      <a href="/health/product/life-sciences-suites"><img src="/health/sites/all/themes/mediregs/images/4_WKWebBanner_LifeSciences_02.jpg" alt=""></a>
+</li>
+      
+</ul>
+
+';
+}

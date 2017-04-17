@@ -1,0 +1,9 @@
+.LV_validation_message {
+    font-size: .9em;
+    display: block;
+    color: darkgrey;
+}
+.LV_invalid,
+.requiredFieldSign {
+    color: red;
+}
