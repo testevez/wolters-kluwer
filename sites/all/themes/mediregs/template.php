@@ -7,8 +7,8 @@
 function _mediregs_page_headers() {
   $pageuri = $_SERVER['REQUEST_URI'];
   $vars = array(
-    'height' => 144,
-    'width' => 897,
+    //'height' => 144,
+    //'width' => 897,
   );
 
   $life_sciences_urls = array(
@@ -82,8 +82,8 @@ function _mediregs_page_headers() {
   }
   else if (preg_match("/knowledge/i", $pageuri) || preg_match("/blog/i", $pageuri)) {
     $vars = array(
-      'height' => 154,
-      'width' => 940,
+      //'height' => 154,
+      //'width' => 940,
     );
     $vars['path'] = drupal_get_path('theme', 'mediregs') .'/images/Health-Reform-KnowlEDGE-Center-940-x-154-banner.jpg';
     $vars['alt'] = 'Health Reform Knowledge Center';
