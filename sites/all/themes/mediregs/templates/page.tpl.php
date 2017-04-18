@@ -106,9 +106,13 @@ cmCreatePageviewTag(<?php echo ("'HS:$title'"); ?>, <?php echo ("'HS:$thistype'"
     <!-- Breadcrumbs -->
     <?php if ($breadcrumb): print $breadcrumb; endif; ?>
 
-    <?php
 
-    _mediregs_page_headers();
+    <?php
+    $page_headers = _mediregs_page_headers();
+    if ($page_headers) {
+      print $page_headers;
+    }
+
     
 print "<!-- Qualaroo for wolterskluwerlb.com/health -->
 <!-- Paste this code right after the <body> tag on every page of your site. -->

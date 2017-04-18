@@ -24,7 +24,11 @@ function _mediregs_page_headers() {
 
   if ('/health/product/mediregs' == $pageuri) {
     $block = module_invoke('kw_admin', 'block_view', 'kw_mediregs_carousel');
+
+    print '<div id="block-kw-admin-kw-medi-slider" class="block block-kw-admin contextual-links-region no-title odd first last block-count-5 block-region-help block-kw-medi-slider"><div class="block-inner clearfix">  ';
+    print '<div class="block-content content">';
     print render($block['content']);
+    print '</div></div></div>';
   }
   else if (strpos($pageuri, "/product/complytrack") || strpos($pageuri, "/product/isam")) {
     $vars['path'] = drupal_get_path('theme', 'mediregs') .'/images/3_WKWebBanner_ComplyTrack_02.jpg';

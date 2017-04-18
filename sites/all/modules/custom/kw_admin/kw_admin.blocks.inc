@@ -81,22 +81,6 @@ function kw_admin_block_configure($delta = '') {
       '#format' => $default_val['format'],
     );
   }
-  // Image Carousel for the product/mediregs page
-  if ($delta == 'kw_mediregs_carousel') {
-    $default_val = variable_get('kw_mediregs_carousel_markup', FALSE);
-    if (!$default_val) {
-      $default_val = array(
-        'value' => kw_mediregs_carousel_markup_default(),
-        'format' => 'un_modified_html',
-      );
-    }
-    $form['kw_mediregs_carousel_markup'] = array(
-      '#type' => 'text_format',
-      '#title' => t('Markup for Image Carousel for the product/mediregs page'),
-      '#default_value' => $default_val['value'],
-      '#format' => $default_val['format'],
-    );
-  }
   return $form;
 }
 
@@ -112,9 +96,6 @@ function kw_admin_block_save($delta = '', $edit = array()) {
   }
   if ($delta == 'kw_wkic') {
     variable_set('kw_wkic_markup', $edit['kw_wkic_markup']);
-  }
-  if ($delta == 'kw_mediregs_carousel') {
-    variable_set('kw_mediregs_carousel_markup', $edit['kw_mediregs_carousel_markup']);
   }
 }
 
@@ -168,24 +149,73 @@ function kw_admin_block_view($delta = '') {
       );
       break;
     case 'kw_mediregs_carousel':
-      $block['subject'] = FALSE;
-      $array = variable_get('kw_mediregs_carousel_markup', FALSE);
-      if (!$array) {
-        $array = array(
-          'value' => kw_mediregs_carousel_markup_default(),
-          'format' => 'un_modified_html',
-        );
-      }
+      // TODO: Make these configurable
+      $slides = _kw_admin_product_mediregs_slides();
       $block['content'] = array(
-        '#markup' => check_markup($array['value'], $array['format'])
+        '#theme' => 'kw_admin_slider',
+        '#slides' => $slides,
       );
       break;
     case 'kw_medi_slider':
+      // TODO: Make these configurable
+      $slides = _kw_admin_front_slides();
       $block['content'] = array(
         '#theme' => 'kw_admin_slider',
-        '#slides' => array(),
+        '#slides' => $slides,
       );
       break;
   }
   return $block;
+}
+
+/**
+ * Helper function to return homepage slides
+ * This should really be controlled by the CMS
+ */
+function _kw_admin_front_slides() {
+  // TODO: Make these configurable
+  $slides = array();
+  $slides[] = array(
+    'link' => '/health/product/coding-suite',
+    'img_src' => '/health/sites/all/themes/mediregs/images/1_WKWebBanner_Coding_02.jpg',
+  );
+  $slides[] = array(
+    'link' => '/health/product/compliance-suite',
+    'img_src' => '/health/sites/all/themes/mediregs/images/2_WKWebBanner_Compliance_02.jpg',
+  );
+  $slides[] = array(
+    'link' => '/health/product/complytrack',
+    'img_src' => '/health/sites/all/themes/mediregs/images/3_WKWebBanner_ComplyTrack_02.jpg',
+  );
+  $slides[] = array(
+    'link' => '/health/product/life-sciences-suites',
+    'img_src' => '/health/sites/all/themes/mediregs/images/4_WKWebBanner_LifeSciences_02.jpg',
+  );
+  $slides[] = array(
+    'link' => '/health/product/publications-data',
+    'img_src' => '/health/sites/all/themes/mediregs/images/5_WKWebBanner_PubsData_02.jpg',
+  );
+  return $slides;
+}
+
+/**
+ * Helper function to return product/mediregs slides
+ * This should really be controlled by the CMS
+ */
+function _kw_admin_product_mediregs_slides() {
+  // TODO: Make these configurable
+  $slides = array();
+  $slides[] = array(
+    'link' => '/health/product/coding-suite',
+    'img_src' => '/health/sites/all/themes/mediregs/images/1_WKWebBanner_Coding_02.jpg',
+  );
+  $slides[] = array(
+    'link' => '/health/product/compliance-suite',
+    'img_src' => '/health/sites/all/themes/mediregs/images/2_WKWebBanner_Compliance_02.jpg',
+  );
+  $slides[] = array(
+    'link' => '/health/product/life-sciences-suites',
+    'img_src' => '/health/sites/all/themes/mediregs/images/4_WKWebBanner_LifeSciences_02.jpg',
+  );
+  return $slides;
 }
