@@ -24,7 +24,6 @@ function kw_admin_token_info() {
     'name' => t('JS path re: phone'),
     'description' => ('Path the the JS for phone number validation'),
   );
-  dsm('it ran');
   return $info;
 
 }
