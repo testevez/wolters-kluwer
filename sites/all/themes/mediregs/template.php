@@ -72,12 +72,6 @@ function _mediregs_page_headers() {
     $img = theme('image', $vars);
     print $img;
   }
-  else if (strpos($pageuri, "/role/reimbursement")) {
-    $vars['path'] = drupal_get_path('theme', 'mediregs') .'/images/WKWebBanner_HCR_01.png';
-    $vars['alt'] = 'Publications & Data';
-    $img = theme('image', $vars);
-    print $img;
-  }
   else if (preg_match("/role/i", $pageuri)) {
     $vars['path'] = drupal_get_path('theme', 'mediregs') .'/images/WKWebBanner_SolutionsbyRole_01.png';
     $vars['alt'] = 'Solutions by Issue';
